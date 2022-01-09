@@ -1,38 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BaseComponent, BaseComponentPropTypes } from './base-component'
+import { CoolComponent, CoolComponentPropsTypes } from './cool-component'
 import { useLifecycle } from '@modular-ui-react/hooks'
 
-export interface CoolComponentPropsTypes extends BaseComponentPropTypes {}
+export interface CoolerComponentPropTypes extends CoolComponentPropsTypes {}
 
-export const CoolComponent = ({
+export const CoolerComponent = ({
   children,
   className,
   ...props
-}: CoolComponentPropsTypes) => {
+}: CoolerComponentPropTypes) => {
   props.lifecycle = useLifecycle(props.lifecycle)
 
   props.lifecycle.onMount = (element: HTMLElement) => {
-    console.log('[CoolComponent]: onMount()', element)
+    console.log('[CoolerComponent]: onMount()', element)
 
-    return () => console.log('[CoolComponent]: onUnmount()', element)
+    return () => console.log('[CoolerComponent]: onUnmount()', element)
   }
 
   props.lifecycle.onRender = (element: HTMLElement) => {
-    console.log('[CoolComponent]: onRender()', element)
+    console.log('[CoolerComponent]: onRender()', element)
   }
 
   return (
-    <BaseComponent
-      className={['CoolComponent', className].join(' ')}
+    <CoolComponent
+      className={['CoolerComponent', className].join(' ')}
       {...props}
     >
       {children}
-    </BaseComponent>
+    </CoolComponent>
   )
 }
 
-CoolComponent.propTypes = {
+CoolerComponent.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)

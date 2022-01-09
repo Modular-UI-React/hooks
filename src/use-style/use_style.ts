@@ -9,7 +9,7 @@ import isDeepEqual from 'fast-deep-equal/react'
 import { mergeObjects } from '@modular-ui-react/utils'
 import { usePrev } from '../use-prev/use_prev'
 
-export const useStyle = (style: object, onChange: Function) => {
+export const useStyle = (style: object, onChange?: Function) => {
   style = style ?? {}
 
   const styleObserverRef = useRef(style)
